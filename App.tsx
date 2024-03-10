@@ -1,12 +1,28 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { StyleSheet } from 'react-native';
+import IdCard from './pages/idCard';
+import PreInfo from './pages/preInfo';
+
+type RootStackNavigatorParamsList = {
+  PreInfo: undefined;
+  IdCard: undefined;
+};
+
+const Stack = createNativeStackNavigator<RootStackNavigatorParamsList>();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    // <View style={styles.container}>
+    //   <PreInfo />
+    // </View>
+
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="PreInfo" component={PreInfo} />
+        <Stack.Screen name="IdCard" component={IdCard} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
